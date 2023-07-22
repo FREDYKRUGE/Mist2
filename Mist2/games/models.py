@@ -25,6 +25,7 @@ class Game(models.Model):
     genre = models.CharField(choices=Genre.choices(), null=True, blank=True)
     release_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=UserModel, on_delete=models.CASCADE)
+    game_photo = models.URLField()
 
     def __str__(self):
         return self.name

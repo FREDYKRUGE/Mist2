@@ -1,4 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    Hello
+    <div class="container">
+        <div class="col-9">
+
+            <!-- Start Searchbar Form -->
+            <form class="w-200 p-4 pb-3 d-flex justify-content-center align-items-center flex-column" method="post">
+                {% csrf_token %}
+                <section class="w-200 p-4 pb-3 d-flex justify-content-center align-items-center flex-column">
+                    <div>
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input type="search" id="form1" class="form-control"/>
+                                <label class="form-label" for="form1">Search</label>
+                            </div>
+                            <button type="button" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+
+            {% include 'common/games.html' %}
+
+        </div>
+    </div>
+
 {% endblock %}

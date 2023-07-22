@@ -21,7 +21,7 @@ class MistUser(auth_models.AbstractUser):
     last_name = models.CharField(max_length=30, validators=[MinLengthValidator(2)],
                                  null=True, blank=True)
     email = models.EmailField(unique=True)
-    gender = models.CharField(choices=Gender.choices(), null=True, blank=True)
+    gender = models.CharField(max_length=11, choices=Gender.choices(), null=True, blank=True)
     profile_picture = models.URLField(null=True, blank=True)
 
     @property

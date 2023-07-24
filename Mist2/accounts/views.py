@@ -20,7 +20,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 
 class RegisterUserView(views.CreateView):
     form_class = RegisterUserForm
-    template_name = ''  # TODO: Add template
+    template_name = 'accounts/register-page.html'  # TODO: Add template
     success_url = reverse_lazy('login')
 
 
@@ -31,7 +31,7 @@ class LoginForm(auth_forms.AuthenticationForm):
 
 
 class LoginUserView(auth_views.LoginView):
-    template_name = ''  # TODO: Add template
+    template_name = 'accounts/login-page.html'
     form_class = LoginForm
 
 
@@ -46,3 +46,24 @@ class UserEditView(views.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('profile-details', kwargs={'pk': self.object.pk})
+
+
+class ProfileDetailView(views.DetailView):
+    template_name = 'accounts/profile-details-page.html'
+    model = UserModel
+
+    def get_context_data(self, **kwargs):
+        profile_image = static('images/person.png')
+
+        if self.object.profile_picture is not None:
+            profile_image = self.object.profile_picture
+
+        context = super().get_context_data(**kwargs)
+
+        # context['pets_photos'] = self.request.photo_set.all()
+
+        return context
+
+
+class ProfileDeleteView(views.DeleteView):
+    template_name = 'accounts/profile-delete-page.html'

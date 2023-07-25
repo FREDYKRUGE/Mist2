@@ -11,14 +11,24 @@
 
             <!-- Start Register Form -->
             <form method="POST">
-                {{ form.username.errors }}
-               {{ form.username|placeholder:'Username' }}
-                {{ form.email.errors }}
-               {{ form.email|placeholder:'Email'  }}
+
+
+                <p>
+                    {{ form.username.errors }}
+                    {{ form.username|placeholder:'Username' }}
+                </p>
+                <p>
+                    {{ form.email.errors }}
+                    {{ form.email|placeholder:'Email' }}
+                </p>
                 {{ form.password1.errors }}
                 {{ form.password2.errors }}
-               {{ form.password1|placeholder:'Password'  }}
-               {{ form.password2|placeholder:'Repeat Password'  }}
+                <p>
+                    {{ form.password1|placeholder:'Password' }}
+                </p>
+                <p>
+                    {{ form.password2|placeholder:'Repeat Password' }}
+                </p>
                 {% csrf_token %}
                 <!-- Register Button -->
                 <button type="submit">Register</button>

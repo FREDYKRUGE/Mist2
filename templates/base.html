@@ -71,7 +71,7 @@
 
 
             <!-- Avatar -->
-            {% if request.user.is_authenticated %}
+              {% if not request.user.is_authenticated %} {#  sasd  #}
                 <div class="dropdown">
                     <a
                             class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Logout</a>

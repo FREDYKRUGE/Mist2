@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +7,12 @@
     <title>Title</title>
 </head>
 <body>
+<div>
 {% for game in games %}
-    {{ game.name }}
+    <img src="{{ game.game_photo.url }}" alt="Smiley face" width="250" height="250">
+    <br />
 {% endfor %}
+</div>
 
 </body>
 </html>

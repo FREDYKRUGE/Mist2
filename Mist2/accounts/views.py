@@ -21,7 +21,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 class RegisterUserView(views.CreateView):
     form_class = RegisterUserForm
     template_name = 'accounts/register-page.html'  # TODO: Add template
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('home')
 
 
 class LoginForm(auth_forms.AuthenticationForm):

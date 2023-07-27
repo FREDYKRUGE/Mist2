@@ -1,6 +1,6 @@
 from enum import Enum
 
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.db import models
 from .validators import image_size_validator_5mb
@@ -23,11 +23,14 @@ class Genre(Enum):
 class Game(models.Model):
     name = models.CharField(max_length=30, validators=[MinLengthValidator(2)],
                             null=False, blank=False)
-    genre = models.CharField(max_length=10 ,choices=Genre.choices(), null=True, blank=True)
+    genre = models.CharField(max_length=10, choices=Genre.choices(), null=True, blank=True)
     release_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=UserModel, on_delete=models.CASCADE)
     game_photo = models.ImageField(blank=False, null=False, validators=(image_size_validator_5mb,),
                                    upload_to='images')
+    size = models.PositiveIntegerField(null=False, blank=False)
+    price = models.PositiveIntegerField(null=False, blank=False)
+    description = models.TextField(max_length=300, validators=(MinLengthValidator(10),), blank=True, null=True)
 
     def __str__(self):
         return self.name

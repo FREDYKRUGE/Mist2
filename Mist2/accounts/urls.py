@@ -10,4 +10,4 @@ urlpatterns = [
     path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-details'),
     path('profile/<int:pk>/edit/', UserEditView.as_view(), name='profile-edit'),
     path('profile/<int:pk>/delete/', ProfileDeleteView.as_view(), name='profile-delete'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

@@ -1,18 +1,15 @@
+{% load static %}
 
+    <div class="d-flex">
+        {% for game in games %}
+    <div class="card m-3" style="width:250px">
+    <img class="card-img-top" src="{{ game.game_photo.url }}" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title">{{ game.name }}</h4>
+        <p class="card-text">{{ game.description }}</p>
+        <a href="#" class="btn btn-primary">Details</a>
+    </div>
+    </div>
+        {% endfor %}
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div>
-{% for game in games %}
-    <img src="{{ game.game_photo.url }}" alt="Smiley face" width="250" height="250">
-    <br />
-{% endfor %}
-</div>
-
-</body>
-</html>

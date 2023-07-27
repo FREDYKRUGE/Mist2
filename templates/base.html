@@ -71,7 +71,7 @@
 
 
             <!-- Avatar -->
-              {% if not request.user.is_authenticated %} {#  sasd  #}
+              {% if request.user.is_authenticated %}
                 <div class="dropdown">
                     <a
                             class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -94,11 +94,7 @@
                             aria-labelledby="navbarDropdownMenuAvatar"
                     >
 
-                        <li>
-                            <a class="dropdown-item" href="{% url 'login' %}">
-                                <i>Login</i>
-                            </a>
-                        </li>
+
                         <li>
                             <a class="dropdown-item" href="#">Profile</a>
                         </li>
@@ -117,7 +113,13 @@
                                 Register
                             </a>
                         </li>
+                         <li>
+                            <a class="dropdown-item" href="{% url 'login' %}">
+                                <i>Login</i>
+                            </a>
+                        </li>
                     </ul>
+
 
                 </div>
 

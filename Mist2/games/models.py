@@ -4,6 +4,7 @@ from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.db import models
 from .validators import image_size_validator_5mb
+from django import forms
 
 UserModel = get_user_model()
 
@@ -34,3 +35,18 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class GameEditForm(forms.ModelForm):
+    class Meta:
+        model = Game
+        fields = ('name', 'genre', 'game_photo', 'size', 'price', 'description')
+        exclude = ('release_date', 'user')
+        labels = {
+            'name': 'Name of the game',
+            'genre': 'Genre',
+            'game_photo': 'Game photo',
+            'size': 'Size',
+            'price': 'Price',
+            'description': 'Description'
+        }

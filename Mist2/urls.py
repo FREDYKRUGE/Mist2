@@ -23,7 +23,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('Mist2.common.urls')),
                   path('accounts/', include('Mist2.accounts.urls')),
-                  # path('games/', include('Mist2.games')),
+                  path('games/', include('Mist2.games.urls')),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +\
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

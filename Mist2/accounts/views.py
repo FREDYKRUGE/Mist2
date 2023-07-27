@@ -35,6 +35,7 @@ class LoginUserView(auth_views.LoginView):
     form_class = LoginForm
 
 
+
 class LogoutUserView(auth_views.LogoutView):
     next_page = reverse_lazy('login')
 

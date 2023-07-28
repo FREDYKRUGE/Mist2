@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -28,7 +29,9 @@ class GameCreateView(LoginRequiredMixin, CreateView):
     success_url = '/'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        game = form.save(commit=False)
+        game.user = self.request.user  # Set the currently logged-in user as the creator
+        game.save()
         return super().form_valid(form)
 
 

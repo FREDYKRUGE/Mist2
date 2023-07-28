@@ -2,33 +2,32 @@
 {% load static %}
 {% block content %}
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Search Bar with Bootstrap</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dark Search Bar with Bootstrap</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     <div class="container">
         <div class="col-9">
 
             <!-- Start Searchbar Form -->
-            <form class="w-200 p-4 pb-3 d-flex justify-content-center align-items-center flex-column" method="post">
+            <form class="w-200 p-4 pb-3 d-flex justify-content-center align-items-center flex-column searchbar"
+                  method="post" action="{% url 'home' %}">
                 {% csrf_token %}
                 <section class="w-200 p-4 pb-3 d-flex justify-content-center align-items-center flex-column">
                     <div class="container mt-3">
-                        <form class="form-inline">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-dark text-light border border-light" placeholder="Search"
-                                       aria-label="Search" aria-describedby="search-btn">
-                                <div class="input-group-append border border-light">
-                                    <button class="btn btn-dark" type="button" id="search-btn">M</button>
-                                </div>
+                        <div class="input-group">
+                            {{ search_form.game_name }}
+                            <div class="input-group-append border border-light">
+                                <button class="btn btn-dark" type="submit" id="search-btn">M</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </section>
             </form>
 
-            {% include 'common/games.html' %}
+         {% include 'common/games.html' %}
+
 
         </div>
     </div>

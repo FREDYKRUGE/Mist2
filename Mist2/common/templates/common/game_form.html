@@ -1,9 +1,39 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% block content %}
-  <h2>{% if form.instance.pk %}Edit Game{% else %}Create Game{% endif %}</h2>
+  <h2 class="text-light">{% if form.instance.pk %}Edit Game{% else %}Create Game{% endif %}</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+      <!-- Name of your game-->
+    <p>
+        {{ form.name.errors }}
+        {{ form.name|placeholder:'Title of your game' }}
+    </p>
+      <!-- Genre of your game-->
+      <p>
+        {{ form.genre.errors }}
+        {{ form.genre|placeholder:'Genre' }}
+    </p>
+      <!-- Photo of your game-->
+      <p>
+        {{ form.game_photo.errors }}
+        {{ form.game_photo|placeholder:'Upload a photo' }}
+    </p>
+      <!-- Size of your game-->
+      <p>
+        {{ form.size.errors }}
+        {{ form.size|placeholder:'Size of your game (in GB)' }}
+    </p>
+      <!-- Price of your game-->
+      <p>
+        {{ form.price.errors }}
+        {{ form.price|placeholder:'Price of your game' }}
+    </p>
+      <!-- Description of your game-->
+      <p>
+        {{ form.description.errors }}
+        {{ form.description|placeholder:'Description of your game' }}
+    </p>
     <input type="submit" value="Save">
   </form>
 {% endblock %}

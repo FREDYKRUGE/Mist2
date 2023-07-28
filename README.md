@@ -51,14 +51,14 @@ docker-compose up
 Accessing the Platform:
 Once the Docker containers are up and running, you can access the platform in your web browser at http://localhost:8000/.
 
-Features
+# Features
 Create, delete, and edit your games on the platform.
 Publish your games for other users to see and potentially "buy" them.
 
-License
+# License
 GNU General Public License v3.0
 
-Acknowledgments
+# Acknowledgments
 This project wouldn't have been possible without the contributions of the open-source community and the developers behind the following libraries and dependencies:
 
 Ansicon - Version 1.89.0
@@ -104,5 +104,5 @@ Zope.event - Version 4.6
 Zope.interface - Version 5.5.2
 Thank you to all the developers and contributors who have worked on these fantastic projects, enabling us to create Mist 2 and build upon your exceptional work.
 
-Contact
+# Contact
 email: momchillitov04@gmail.com

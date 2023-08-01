@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.templatetags.static import static
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from .models import Game
 
 
@@ -45,3 +46,11 @@ class GameDeleteView(LoginRequiredMixin, DeleteView):
     model = Game
     template_name = 'common/game_confirm_delete.html'
     success_url = '/'
+
+
+class GameDetailsView(LoginRequiredMixin, DetailView):
+    model = Game
+    template_name = 'common/game_details.html'
+
+    def get_context_data(self, **kwargs):
+        pass  # TODO: Fix the view

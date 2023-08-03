@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ game.name }}</h1>
+    <img src="{{ game.game_photo.url }}" alt="{{ game.name }} Photo">
+    <p><strong>Genre:</strong> {{ game.get_genre_display }}</p>
+    <p><strong>Release Date:</strong> {{ game.release_date }}</p>
+    <p><strong>Size:</strong> {{ game.size }} MB</p>
+    <p><strong>Price:</strong> ${{ game.price }}</p>
+
+    {% if game.description %}
+        <h2>Description:</h2>
+        <p>{{ game.description }}</p>
+    {% endif %}
+
+    <!-- Add any other details you want to display about the game -->
+
+    <!-- You can also include user-specific actions if the user is logged in -->
+    {% if user.is_authenticated %}
+        <a href="#">Add to Wishlist</a>
+        <a href="#">Buy Now</a>
+    {% else %}
+        <p>Please log in to perform actions.</p>
+    {% endif %}
+{% endblock %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from .models import Game
 
 
@@ -25,7 +25,7 @@ class GameForm(forms.ModelForm):
 class GameCreateView(LoginRequiredMixin, CreateView):
     model = Game
     form_class = GameForm
-    template_name = 'common/game_form.html'
+    template_name = 'games/game_form.html'
     success_url = '/'
 
     def form_valid(self, form):
@@ -38,10 +38,17 @@ class GameCreateView(LoginRequiredMixin, CreateView):
 class GameEditView(LoginRequiredMixin, UpdateView):
     model = Game
     form_class = GameForm
-    template_name = 'common/game_form.html'
+    template_name = 'games/game_form.html'
 
 
 class GameDeleteView(LoginRequiredMixin, DeleteView):
     model = Game
-    template_name = 'common/game_confirm_delete.html'
+    template_name = 'games/game_confirm_delete.html'
     success_url = '/'
+
+
+class GameDetailsView(DetailView):
+    model = Game
+    template_name = 'games/game_details.html'
+    context_object_name = 'game'
+    pk_url_kwarg = 'pk'

@@ -7,7 +7,7 @@
     <div class="card-body">
         <h4 class="card-title">{{ game.name }}</h4>
         <p class="card-text">{{ game.description }}</p>
-        <a href="#" class="btn btn-primary">Details</a>
+        <a href="{% url 'details_game' game.pk %}" class="btn btn-primary">Details</a>
     </div>
     </div>
         {% endfor %}

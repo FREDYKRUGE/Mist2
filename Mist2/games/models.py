@@ -27,7 +27,7 @@ class Game(models.Model):
     genre = models.CharField(max_length=10, choices=Genre.choices(), null=True, blank=True)
     release_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=UserModel, on_delete=models.CASCADE)
-    game_photo = models.ImageField(blank=False, null=False, validators=(image_size_validator_5mb,),
+    game_photo = models.ImageField(blank=True, null=True, validators=(image_size_validator_5mb,),
                                    upload_to='images')
     size = models.PositiveIntegerField(null=False, blank=False)
     price = models.PositiveIntegerField(null=False, blank=False)

@@ -35,7 +35,6 @@ class LoginUserView(auth_views.LoginView):
     form_class = LoginForm
 
 
-
 class LogoutUserView(auth_views.LogoutView):
     next_page = reverse_lazy('login')
 
@@ -61,7 +60,7 @@ class ProfileDetailView(views.DetailView):
 
         context = super().get_context_data(**kwargs)
 
-        # context['pets_photos'] = self.request.photo_set.all()
+        # TODO: Fix the view
 
         return context
 

@@ -14,7 +14,7 @@ services:
 
   web:
     build:
-      context: D:\SoftuniProjects\Mist2  # The path to your Django project directory
+      context: C:\SofuniProject\Mist2  # The path to your Django project directory
       dockerfile: Dockerfile  # Use the newly created Dockerfile for building the Django web application image
     command: python manage.py runserver 0.0.0.0:8000  # Adjust this command based on your Django setup
     volumes:

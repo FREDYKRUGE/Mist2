@@ -4,6 +4,8 @@ from django.contrib.auth import models as auth_models
 from django.core.validators import MinLengthValidator
 from django import forms
 
+from Mist2.accounts.validators import image_size_validator_5mb
+
 
 class Gender(Enum):
     MALE = 'Male'
@@ -22,7 +24,8 @@ class MistUser(auth_models.AbstractUser):
                                  null=True, blank=True)
     email = models.EmailField(unique=True)
     gender = models.CharField(max_length=11, choices=Gender.choices(), null=True, blank=True)
-    profile_picture = models.URLField(null=True, blank=True)
+    profile_picture = models.ImageField(blank=True, null=True, validators=(image_size_validator_5mb,),
+                                        upload_to='images')
 
     @property
     def full_name(self):

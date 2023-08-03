@@ -28,7 +28,7 @@ class Game(models.Model):
     release_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(to=UserModel, on_delete=models.CASCADE)
     game_photo = models.ImageField(blank=True, null=True, validators=(image_size_validator_5mb,),
-                                   upload_to='images')
+                                   upload_to='images//')
     size = models.PositiveIntegerField(null=False, blank=False)
     price = models.PositiveIntegerField(null=False, blank=False)
     description = models.TextField(max_length=300, validators=(MinLengthValidator(10),), blank=True, null=True)
@@ -50,3 +50,4 @@ class GameEditForm(forms.ModelForm):
             'price': 'Price',
             'description': 'Description'
         }
+

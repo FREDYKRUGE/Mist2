@@ -25,5 +25,5 @@ urlpatterns = [
                   path('accounts/', include('Mist2.accounts.urls')),
                   path('games/', include('Mist2.games.urls')),
 
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +\
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

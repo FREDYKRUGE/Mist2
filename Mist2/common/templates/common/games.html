@@ -4,14 +4,19 @@
     {% for game in games %}
         <div class="card m-3" style="width:250px">
             {% if game.game_photo %}
-            <img class="card-img-top" src="{{ game.game_photo }}" alt="Card image">
+                <img class="img-thumbnail" style="width: 300px; height: 200px;" src="{{ game.game_photo.url }}"
+                     alt="Card image">
             {% else %}
-            <img class="card-img-top" src="{% static 'images/def_photo_game.jpg' %}" alt="Card image">
+                <img class="img-thumbnail" style="width: 300px; height: 200px;"
+                     src="{% static 'images/def_photo_game.jpg' %}" alt="Card image">
             {% endif %}
             <div class="card-body">
                 <h4 class="card-title">{{ game.name }}</h4>
                 <p class="card-text">{{ game.description }}</p>
-                <a href="#" class="btn btn-primary">Details</a>
+                <div class="d-flex align-items-center border p-2">
+                    <a class="btn btn-danger btn-sm btn-outline-warning" href="{% url 'details_game' game.pk %}">View game page</a>
+                    <p class="card-text ml-5"><strong>{{ game.price }}$</strong></p>
+                </div>
             </div>
         </div>
     {% endfor %}

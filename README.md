@@ -1,7 +1,3 @@
-Sure, here's the complete snippet for the README file:
-
-bash
-Copy code
 # Mist 2 - Game Platform
 
 Mist 2 is a game platform that allows you to create, delete, and edit your games. You can post your games for others to see, and users have the option to "buy" them.

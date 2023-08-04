@@ -63,34 +63,17 @@
         <!-- Collapsible wrapper -->
 
         <!-- Right elements -->
+
         <div class="d-flex align-items-center">
             <!-- Icon -->
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-shopping-cart"></i>
             </a>
-
+            {% block right_nav %}
+            {% endblock %}
 
             <!-- Avatar -->
-              {% if request.user.is_authenticated %}
-                  {% if request.resolver_match.view_name == 'details_game' %}
-                      {# TODO: Add that when the creator of the game is visiting the page the buttons are visable #}
-                <div class="nav-item mr-3 ml-3" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#">
-                                Edit game
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="#">
-                                Delete game
-                            </a>
-                        </li>
-                    </ul>
-
-
-                </div>
-                {% endif %}
+            {% if request.user.is_authenticated %}
                 <div class="dropdown">
                     <a
                             class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -108,23 +91,27 @@
                                 loading="lazy"
                         />
                     </a>
-                    <ul
-                            class="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="navbarDropdownMenuAvatar"
-                    >
 
 
-                        <li>
-                            <a class="dropdown-item" href="{% url 'create_game' %}">Add you Game</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Library</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                        </li>
+                        <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="navbarDropdownMenuAvatar"
+                        >
+                            <li>
+                                <p class="ml-3"> <strong>Hello</strong>, {{ request.user }}</p>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'create_game' %}">Add you Game</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Library</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </li>
 
-                    </ul>
+                        </ul>
+
                 </div>
 
             {% elif not request.user.is_authenticated %}
@@ -136,7 +123,7 @@
                                 Register
                             </a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="{% url 'login' %}">
                                 <i>Login</i>
                             </a>
@@ -145,10 +132,8 @@
 
 
                 </div>
-
-
-
             {% endif %}
+
 
         </div>
         <!-- Right elements -->

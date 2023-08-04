@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Confirm Delete</h2>
-    <p>Are you sure you want to delete "{{ game.name }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="Confirm">
-    </form>
+    <div class="d-flex justify-content-center align-items-center w-100 h-100 p-5">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="text-danger"> <strong>Confirm Delete</strong></h2>
+                <p class="text-light"><strong>Are you sure you want to delete "{{ game.name }}"?</strong> </p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" value="Confirm">
+                </form>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}

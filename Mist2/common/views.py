@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from Mist2.common.forms import SearchForm
 from Mist2.games.models import Game

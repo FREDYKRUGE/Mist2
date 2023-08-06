@@ -42,27 +42,19 @@ class LogoutUserView(auth_views.LogoutView):
 class UserEditView(views.UpdateView):
     model = UserModel
     form_class = UserEditForm
-    template_name = ''  # TODO: Add template
+    template_name = 'accounts/profile-edit-page.html'
 
     def get_success_url(self):
         return reverse_lazy('profile-details', kwargs={'pk': self.object.pk})
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 class ProfileDetailView(views.DetailView):
     template_name = 'accounts/profile-details-page.html'
     model = UserModel
-
-    def get_context_data(self, **kwargs):
-        profile_image = static('images/person.png')
-
-        if self.object.profile_picture is not None:
-            profile_image = self.object.profile_picture
-
-        context = super().get_context_data(**kwargs)
-
-        # TODO: Fix the view
-
-        return context
+    pk_url_kwarg = 'pk'
 
 
 class ProfileDeleteView(views.DeleteView):

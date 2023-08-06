@@ -1,13 +1,29 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mist</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="p-3">
+        <h1 class="text-light ml-2">{{ user.get_user_name }}</h1>
+        {% if user.profile_picture %}
+            <img class="img-thumbnail ml-2" style="width: 200px; height: 200px;" src="{{ user.profile_picture.url }}"
+                 alt="{{ user.name }} Photo">
+        {% else %}
+            <img class="img-thumbnail ml-2" style="width: 200px; height: 200px;"
+                 src="{% static 'images/def_user_photo.jpg' %}"
+                 alt="Card image">
+        {% endif %}
+        {% if user.first_name %}
+            <p class="text-light ml-2"><strong>First name:</strong> {{ user.first_name }}</p>
+        {% endif %}
+        {% if user.last_name %}
+            <p class="text-light ml-2"><strong>Last name:</strong> {{ user.last_name }}</p>
+        {% endif %}
 
-</body>
-</html>
+        <p class="text-light ml-2"><strong>Email:</strong> {{ user.email }} </p>
+    </div>
+    <a class="nav-link text-light" href="{% url 'profile-edit' user.pk %}">
+        Edit game
+    </a>
+
+
+
+{% endblock %}

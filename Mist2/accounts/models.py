@@ -26,6 +26,7 @@ class MistUser(auth_models.AbstractUser):
     gender = models.CharField(max_length=11, choices=Gender.choices(), null=True, blank=True)
     profile_picture = models.ImageField(blank=True, null=True, validators=(image_size_validator_5mb,),
                                         upload_to='images')
+    library = models.ManyToManyField('games.Game', related_name='users_library', blank=True)
 
     @property
     def full_name(self):

@@ -42,9 +42,7 @@ class GameEditView(LoginRequiredMixin, UpdateView):
     template_name = 'games/game_form.html'
 
     def get_success_url(self):
-        # Get the pk of the current object being edited
         pk = self.object.pk
-        # Reverse-resolve the URL with the view name 'details_game' and the pk parameter
         return reverse('details_game', kwargs={'pk': pk})
 
 

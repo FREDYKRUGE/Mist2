@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class=" text-light">Edit Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.first_name }}
+        </div>
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.profile_picture.id_for_label }}">Image:</label>
+            {{ form.profile_picture }}
+        </div>
+        <div class="form-group m-2 text-light">
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+{% endblock %}

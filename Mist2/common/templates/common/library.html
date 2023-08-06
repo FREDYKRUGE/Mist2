@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Your Library</h1>
+        <div class="d-flex flex-wrap">
+            {% for game in games %}
+                <div class="card m-3" style="width: 250px;">
+                    {% if game.game_photo %}
+                        <img class="img-thumbnail" style="width: 300px; height: 200px;" src="{{ game.game_photo.url }}"
+                             alt="Card image">
+                    {% else %}
+                        <img class="img-thumbnail" style="width: 300px; height: 200px;"
+                             src="{% static 'images/def_photo_game.jpg' %}" alt="Card image">
+                    {% endif %}
+                    <div class="card-body d-block   ">
+                        <h4 class="card-title">{{ game.name }}</h4>
+                        <p class="card-text">{{ game.description }}</p>
+                        <a href="{% url 'details_game' game.pk %}" class="btn btn-primary">Details</a>
+                        <a href="{% url 'details_game' game.pk %}" class="btn btn-primary">Details</a>
+                    <a href="{% url 'remove_from_library' game.pk %}" class="btn btn-danger">Remove</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

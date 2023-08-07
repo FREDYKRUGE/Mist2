@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
-from Mist2.common.forms import SearchForm
+from Mist2.common.forms import SearchForm, CommentForm
+from Mist2.common.models import Like
 from Mist2.games.models import Game
 
 UserModel = get_user_model()
@@ -51,3 +53,30 @@ def remove_from_library(request, pk):
         except Game.DoesNotExist:
             pass
     return redirect('library')
+
+
+@login_required(login_url='/accounts/login')
+def like_functionality(request, game_id):
+    game = Game.objects.get(pk=game_id)
+    like = Like.objects.filter(to_game_id=game_id, user=request.user).first()
+
+    if like:
+        like.delete()
+    else:
+        like = Like(to_game=game, user=request.user)
+        like.save()
+
+    return redirect(request.META['HTTP_REFERER'] + f'#{game_id}')
+
+
+@login_required(login_url='/accounts/login')
+def add_comment(request, game_id):
+    if request.method == 'POST':
+        game = Game.objects.get(id=game_id)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.to_game = game
+            comment.user = request.user
+            comment.save()
+        return redirect(request.META['HTTP_REFERER'] + f"#{game_id}")

@@ -36,6 +36,10 @@ class Game(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def like_count(self):
+        return self.likes.count()
+
 
 class GameEditForm(forms.ModelForm):
     class Meta:

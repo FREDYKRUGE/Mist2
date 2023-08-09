@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,8 +7,10 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from .models import Game
 from django.urls import reverse_lazy, reverse
 
-
 # Create your views here.
+
+UserModel = get_user_model()
+
 
 class GameForm(forms.ModelForm):
     class Meta:
@@ -58,6 +61,20 @@ class GameDetailsView(DetailView):
     context_object_name = 'game'
     pk_url_kwarg = 'pk'
 
+    class GameDetailsView(DetailView):
+        model = Game
+        template_name = 'games/game_details.html'
+        context_object_name = 'game'
+        pk_url_kwarg = 'pk'
 
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
 
+            user = self.request.user
+            game = context['game']
+            is_in_library = False
+            if user.is_authenticated:
+                is_in_library = user.library.filter(id=game.id).exists()
 
+            context['is_in_library'] = is_in_library
+            return context

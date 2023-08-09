@@ -19,4 +19,4 @@ class Like(models.Model):
 
 
 class Meta:
-    ordering = ['-date_time_of_publication']
+    ordering = ['+date_time_of_publication']

@@ -11,8 +11,8 @@
 
             <!-- Start Login Form-->
             <form action="{% url 'login' %}" method="POST">
-               {{ form.username|placeholder:'Username' }}
-               {{ form.password|placeholder:'Password' }}
+                {{ form.username|placeholder:'Username' }}
+                {{ form.password|placeholder:'Password' }}
 
                 <input type="hidden" value="{{ next }}" name="next"/>
                 {% csrf_token %}

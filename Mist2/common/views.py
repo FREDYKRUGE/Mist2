@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.views import View
 
 from Mist2.common.forms import SearchForm, CommentForm
-from Mist2.common.models import Like
+from Mist2.common.models import Like, Comment
 from Mist2.games.models import Game
 
 UserModel = get_user_model()
@@ -80,3 +82,15 @@ def add_comment(request, game_id):
             comment.user = request.user
             comment.save()
         return redirect(request.META['HTTP_REFERER'] + f"#{game_id}")
+
+    return HttpResponse("Invalid request")  # Default response if request method is not POST
+
+
+def remove_comment(request, comment_id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+        comment.delete()
+
+        return HttpResponseRedirect(reverse_lazy('details_game', args=[comment.to_game.id]))
+    else:
+        return HttpResponseBadRequest("Invalid request")

@@ -131,4 +131,4 @@ AUTH_USER_MODEL = 'accounts.MistUser'
 
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/'

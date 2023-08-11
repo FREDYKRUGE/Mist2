@@ -80,6 +80,7 @@
 
 
 
+
                                                      {% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/def_user_photo.jpg' %}{% endif %}"
                                              alt="avatar"
                                              width="65"
@@ -114,34 +115,38 @@
                 {% for comment in game.comments.all %}
                     {% if comment.user == request.user %}
                         <li class="list-group-item d-flex justify-content-between">
-                            {% if comment.user.profile_picture %}
-                                <div>
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                         src="{{ comment.user.profile_picture.url }}"
-                                         alt="avatar"
-                                         width="35"
-                                         height="35"/>{{ comment.comment_text }}
-                                </div>
-                                <div>
-                                    <form method="post" action="{% url 'remove_comment' comment.id %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-
-                                </div>
-                            {% else %}
+                        {% if comment.user.profile_picture %}
+                            <div>
                                 <img class="rounded-circle shadow-1-strong me-3"
-                                     src="{% static 'images/def_user_photo.jpg' %}"
+                                     src="{{ comment.user.profile_picture.url }}"
                                      alt="avatar"
                                      width="35"
                                      height="35"/>{{ comment.comment_text }}
+                            </div>
+                            <div>
                                 <form method="post" action="{% url 'remove_comment' comment.id %}">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                 </form>
 
-                                </li>
-                            {% endif %}
+                            </div>
+                        {% else %}
+                            <div>
+                            <img class="rounded-circle shadow-1-strong me-3"
+                                 src="{% static 'images/def_user_photo.jpg' %}"
+                                 alt="avatar"
+                                 width="35"
+                                 height="35"/>{{ comment.comment_text }}
+                            </div>
+                            <div>
+                            <form method="post" action="{% url 'remove_comment' comment.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            <div>
+
+
+                        {% endif %}
                     {% else %}
                         <li class="list-group-item">
                             {% if comment.user.profile_picture %}

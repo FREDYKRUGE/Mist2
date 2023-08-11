@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.contrib.auth import views as auth_views, get_user_model, login
+from django.contrib.auth import views as auth_views, get_user_model, login, authenticate
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth.forms import UsernameField
 from django import forms
@@ -23,6 +23,15 @@ class RegisterUserView(views.CreateView):
     template_name = 'accounts/register-page.html'
     success_url = reverse_lazy('home')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        # Authenticate and log in the user
+        user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+        if user is not None:
+            login(self.request, user)
+
+        return response
 
 class LoginForm(auth_forms.AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': 'Username'}))

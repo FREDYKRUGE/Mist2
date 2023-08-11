@@ -83,7 +83,7 @@ def add_comment(request, game_id):
             comment.save()
         return redirect(request.META['HTTP_REFERER'] + f"#{game_id}")
 
-    return HttpResponse("Invalid request")  # Default response if request method is not POST
+    return HttpResponse("Invalid request")
 
 
 def remove_comment(request, comment_id):

@@ -22,7 +22,7 @@ from django.urls import path, include
 from Mist2.common import views
 from Mist2.common.views import AddToLibraryView
 
-urlpatterns = [
+urlpatterns = ([
                   path('admin/', admin.site.urls),
                   path('', include('Mist2.common.urls')),
                   path('accounts/', include('Mist2.accounts.urls')),
@@ -31,5 +31,5 @@ urlpatterns = [
                   path('library/', views.library_view, name='library'),
                   path('remove_from_library/<int:pk>/', views.remove_from_library, name='remove_from_library'),
 
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
-              static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +
+               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

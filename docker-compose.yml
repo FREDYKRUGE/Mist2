@@ -4,23 +4,24 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: MistDB  # Replace 'MistDB' with the same value you used in settings.py
-      POSTGRES_USER: postgres-user  # Replace 'postgres-user' with the same value you used in settings.py
-      POSTGRES_PASSWORD: password  # Replace 'password' with the same value you used in settings.py
+      POSTGRES_DB: MistDB
+      POSTGRES_USER: postgres-user
+      POSTGRES_PASSWORD: password
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
 
+
   web:
     build:
-      context: C:\SofuniProject\Mist2  # The path to your Django project directory
-      dockerfile: Dockerfile  # Use the newly created Dockerfile for building the Django web application image
-    command: python manage.py runserver 0.0.0.0:8000  # Adjust this command based on your Django setup
+      context: D:\SoftuniProjects\Mist2
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app  # Mount the current directory (Django project) to the '/app' directory in the container
+      - .:/app
     ports:
-      - "8000:8000"  # Map host port 8000 to container port 8000
+      - "8000:8000"
 
 volumes:
   postgres_data:

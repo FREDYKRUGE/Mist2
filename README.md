@@ -101,4 +101,4 @@ Zope.interface - Version 5.5.2
 Thank you to all the developers and contributors who have worked on these fantastic projects, enabling us to create Mist 2 and build upon your exceptional work.
 
 # Contact
-email: momchillitov04@gmail.com
+email: litovmomchil@gmail.com

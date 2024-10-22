@@ -1,0 +1,1 @@
+web: gunicorn Mist2.wsgi

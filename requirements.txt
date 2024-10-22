@@ -1,3 +1,4 @@
+Django==4.2.3
 psycopg2-binary
 anyio==4.6.0
 argon2-cffi==23.1.0
@@ -120,4 +121,4 @@ wcwidth==0.2.13
 webcolors==24.8.0
 webencodings==0.5.1
 websocket-client==1.8.0
-Django==4.2.3
+

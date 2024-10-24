@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'Mist2.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mist2-server.postgres.database.azure.com",
-        "USER": "batzexdyyj",
-        "PASSWORD": "*fU6#w!KgR96rTtnWB6P",
+        "NAME": "mist2-database",
+        "USER": "pjicctkyii",
+        "PASSWORD": "GroNLmK3C78$a9fk",
         "HOST": "dbs-test-01.postgres.database.azure.com",
         "PORT": "5432",
     }

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Mist2.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "",                      # Database name
         "USER": "",                          # Username
         "PASSWORD": "",                # Password
